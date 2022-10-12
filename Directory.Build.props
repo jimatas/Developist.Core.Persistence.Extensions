@@ -4,14 +4,11 @@
     <Authors>Jim Atas</Authors>
     <Copyright>Copyright (c) $([System.DateTime]::Now.Year) $(Authors)</Copyright>
   </PropertyGroup>
+  <Import Project="Version.props"/>
   <PropertyGroup>
-    <Major>1</Major>
-    <Minor>0</Minor>
-    <Patch>0</Patch>
     <Build>$([System.Math]::Floor($([System.DateTime]::Now.Subtract($([System.DateTime]::Parse("01-01-2000"))).TotalDays)))</Build>
     <Revision>$([System.Math]::Floor($([MSBuild]::Divide($([System.DateTime]::Now.Subtract($([System.DateTime]::Today)).TotalSeconds), 2.0))))</Revision>
     <VersionPrefix>$(Major).$(Minor).$(Patch)</VersionPrefix>
-    <VersionSuffix></VersionSuffix>
     <AssemblyVersion>$(Major).$(Minor).0.0</AssemblyVersion>
     <FileVersion>$(Major).$(Minor).$(Build).$(Revision)</FileVersion>
   </PropertyGroup>
