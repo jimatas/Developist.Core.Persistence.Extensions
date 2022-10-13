@@ -11,8 +11,10 @@ namespace Developist.Extensions.Persistence.DependencyInjection
     {
         /// <summary>
         /// Updates the <see cref="IUnitOfWork"/> service registration by wrapping the registered implementation in a <see cref="UnitOfWorkWrapper"/>.
-        /// Call this method after the call to AddUnitOfWork.
         /// </summary>
+        /// <remarks>
+        /// Call this method after calling AddUnitOfWork. For example, <c>services.AddUnitOfWork().WrapUnitOfWork();</c>
+        /// </remarks>
         /// <param name="services"></param>
         /// <returns></returns>
         public static IServiceCollection WrapUnitOfWork(this IServiceCollection services)
@@ -22,8 +24,10 @@ namespace Developist.Extensions.Persistence.DependencyInjection
 
         /// <summary>
         /// Updates the <see cref="IUnitOfWork"/> service registration by wrapping the registered implementation in a <see cref="UnitOfWorkWrapper"/>.
-        /// Call this method after the call to AddUnitOfWork.
         /// </summary>
+        /// <remarks>
+        /// Call this method after calling AddUnitOfWork. For example, <c>services.AddUnitOfWork().WrapUnitOfWork();</c>
+        /// </remarks>
         /// <param name="services"></param>
         /// <param name="factory">A factory delegate to customize the <see cref="UnitOfWorkWrapper"/> that will be used to wrap the actual <see cref="IUnitOfWork"/> implementation.</param>
         /// <returns></returns>
