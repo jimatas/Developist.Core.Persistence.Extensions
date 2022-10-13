@@ -16,7 +16,7 @@ namespace Developist.Extensions.Persistence
         }
 
         /// <summary>
-        /// The list of entities that were retrieved.
+        /// The list of entities that were retrieved, if any.
         /// </summary>
         public IReadOnlyList<TEntity> Entities { get; }
 
