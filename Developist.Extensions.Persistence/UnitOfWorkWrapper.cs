@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Developist.Extensions.Persistence
 {
     /// <summary>
-    /// Implements the wrapper or decorator design pattern by wrapping an <see cref="IUnitOfWork"/> instance that the default method implementations delegate to.
+    /// Implements the wrapper or decorator design pattern by wrapping an <see cref="IUnitOfWork"/> instance, which the default method implementations will delegate to.
     /// Provides a convenience base class to derive from and adapt as needed.
     /// </summary>
     public class UnitOfWorkWrapper : IUnitOfWork
