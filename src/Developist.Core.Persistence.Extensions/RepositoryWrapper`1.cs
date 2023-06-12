@@ -70,9 +70,12 @@ namespace Developist.Core.Persistence.Extensions
         }
 
         /// <inheritdoc/>
-        public Task<TEntity> SingleOrDefaultAsync(IFilterCriteria<TEntity> criteria, CancellationToken cancellationToken = default)
+        public async Task<TEntity> SingleOrDefaultAsync(IFilterCriteria<TEntity> criteria, CancellationToken cancellationToken = default)
         {
-            throw new NotImplementedException();
+            var entity = await Repository.SingleOrDefaultAsync(criteria, cancellationToken).ConfigureAwait(false);
+            OnEntitiesRetrieved(new EntitiesRetrievedEventArgs<TEntity>(entity is null ? Array.Empty<TEntity>() : new[] { entity }, this));
+
+            return entity;
         }
 
         /// <inheritdoc/>

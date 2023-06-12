@@ -4,7 +4,7 @@
     <Authors>Jim Atas</Authors>
     <Description>Enhances the Developist.Core.Persistence package with useful extensions.</Description>
     <Copyright>Copyright (c) $([System.DateTime]::Now.Year) $(Authors)</Copyright>
-    <Version>2.0.1</Version>
+    <Version>2.0.2</Version>
     <AssemblyVersion>$(Version.Split('.')[0]).$(Version.Split('.')[1]).0.0</AssemblyVersion>
     <FileVersion>$(Version.Split('.')[0]).$(Version.Split('.')[1]).$([System.Math]::Floor($([System.DateTime]::Now.Subtract($([System.DateTime]::Parse("01-01-2000"))).TotalDays))).$([System.Math]::Floor($([MSBuild]::Divide($([System.DateTime]::Now.Subtract($([System.DateTime]::Today)).TotalSeconds), 2.0))))</FileVersion>
     <TargetFramework>netstandard2.1</TargetFramework>
