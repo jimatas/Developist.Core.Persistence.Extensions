@@ -1,6 +1,5 @@
 ﻿using Developist.Core.Persistence.Extensions.Tests.Fixture;
 using Microsoft.Extensions.DependencyInjection;
-using Moq;
 
 namespace Developist.Core.Persistence.Extensions.Tests;
 
@@ -17,6 +16,67 @@ public class RepositoryTests
         // Assert
         var exception = Assert.ThrowsException<ArgumentNullException>(action);
         Assert.AreEqual("repository", exception.ParamName);
+    }
+
+    [TestMethod]
+    public void Add_ByDefault_RaisesEntityAddedEvent()
+    {
+        // Arrange
+        using var serviceProvider = ServiceProviderHelper.ConfigureServiceProvider(services => services.AddUnitOfWork().WrapUnitOfWork());
+        var unitOfWork = serviceProvider.GetRequiredService<IUnitOfWork>();
+        var repository = unitOfWork.Repository<Person>();
+
+        var entityToAdd = new Person
+        {
+            GivenName = "John",
+            FamilyName = "Smith",
+            Age = 30
+        };
+
+        Person? entityAdded = null;
+        ((RepositoryWrapper<Person>)repository).EntityAdded += (sender, e) =>
+        {
+            entityAdded = e.Entity;
+        };
+
+        // Act
+        repository.Add(entityToAdd);
+
+        // Assert
+        Assert.IsNotNull(entityAdded);
+        Assert.AreSame(entityToAdd, entityAdded);
+    }
+
+    [TestMethod]
+    public async Task Remove_ByDefault_RaisesEntityRemovedEvent()
+    {
+        // Arrange
+        using var serviceProvider = ServiceProviderHelper.ConfigureServiceProvider(services => services.AddUnitOfWork().WrapUnitOfWork());
+        var unitOfWork = serviceProvider.GetRequiredService<IUnitOfWork>();
+        var repository = unitOfWork.Repository<Person>();
+
+        var entityToRemove = new Person
+        {
+            GivenName = "John",
+            FamilyName = "Smith",
+            Age = 30
+        };
+
+        repository.Add(entityToRemove);
+        await unitOfWork.CompleteAsync();
+
+        Person? entityRemoved = null;
+        ((RepositoryWrapper<Person>)repository).EntityRemoved += (sender, e) =>
+        {
+            entityRemoved = e.Entity;
+        };
+
+        // Act
+        repository.Remove(entityToRemove);
+
+        // Assert
+        Assert.IsNotNull(entityRemoved);
+        Assert.AreSame(entityToRemove, entityRemoved);
     }
 
     [TestMethod]
