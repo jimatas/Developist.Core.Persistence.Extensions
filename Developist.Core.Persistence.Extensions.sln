@@ -5,6 +5,8 @@ VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Developist.Core.Persistence.Extensions", "src\Developist.Core.Persistence.Extensions\Developist.Core.Persistence.Extensions.csproj", "{0E1AFD5E-6CCD-44FD-9EF2-367054C8435F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Developist.Core.Persistence.Extensions.Tests", "test\Developist.Core.Persistence.Extensions.Tests\Developist.Core.Persistence.Extensions.Tests.csproj", "{7593612C-E008-4D1F-86E8-456A80941FB3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{0E1AFD5E-6CCD-44FD-9EF2-367054C8435F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0E1AFD5E-6CCD-44FD-9EF2-367054C8435F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0E1AFD5E-6CCD-44FD-9EF2-367054C8435F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7593612C-E008-4D1F-86E8-456A80941FB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7593612C-E008-4D1F-86E8-456A80941FB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7593612C-E008-4D1F-86E8-456A80941FB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7593612C-E008-4D1F-86E8-456A80941FB3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
